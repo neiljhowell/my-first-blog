@@ -8,9 +8,13 @@
         </div>
 
         <div>
-            <p>published: 2/6/2016, 9:14</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Hi there!  I'm learning webpage design with Python and this is my first post on my first webpage!</p>
+            {% for post in posts %}
+            	<div>
+            		<p>published: {{  post.published_date  }}</p>
+            		<h1><a href="">{{  post.title  }}</a></h1>
+            		<p>{{  post.text|linebreaks  }}</p>
+        		</div>
+        	{% endfor %}
         </div>
 
         <div>
