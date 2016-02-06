@@ -1,26 +1,13 @@
-<html>
-    <head>
-        <title>Neil Howell's blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Neil Howell's Blog</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-        <div>
-            {% for post in posts %}
-            	<div>
-            		<p>published: {{  post.published_date  }}</p>
-            		<h1><a href="">{{  post.title  }}</a></h1>
-            		<p>{{  post.text|linebreaks  }}</p>
-        		</div>
-        	{% endfor %}
-        </div>
-
-        <div>
-            <p>published: 2/6/2016, 9:15</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Here's a second post to take up a little space and demonstrate divs within an html document.</p>
-        </div>
-    </body>
-</html>
+{% block content %}
+            			{% for post in posts %}
+                			<div class="post">
+                    			<div class="date">
+                        			<p>published: {{ post.published_date }}</p>
+                    			</div>
+                    			<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                    			<p>{{ post.text|linebreaks }}</p>
+                			</div>
+            			{% endfor %}
+{% endblock content %}        			
